@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Anggota | Sipinjam</title>
+
+	<!-- Material CDN -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+	<!-- My CSS -->
+	<link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+</head>
+<body>
+	<div class="container">
+		{{!------------------- ASIDE ------------------}}
+		<aside>
+			<div class="top">
+				<div class="logo">
+					<img src="/assets/img/logo.png">
+					<h2>SI<span class="danger">PINJAM</span></h2>
+				</div>
+				<div class="close" id="close-btn">
+					<span class="material-icons-sharp">close</span>
+				</div>
+			</div>
+
+			<div class="sidebar">
+				<a href="/">
+					<span class="material-icons-sharp">grid_view</span>
+					<h3>Dashboard</h3>
+				</a>
+				<a href="/peminjaman">
+					<span class="material-icons-sharp">receipt_long</span>
+					<h3>Peminjaman</h3>
+				</a>
+				<a href="/pengembalian">
+					<span class="material-icons-sharp">receipt</span>
+					<h3>Pengembalian</h3>
+				</a>
+				<a href="/buku">
+					<span class="material-icons-sharp">library_books</span>
+					<h3>Buku</h3>
+				</a>
+				<a href="/anggota" class="active">
+					<span class="material-icons-sharp">groups</span>
+					<h3>Anggota</h3>
+				</a>
+				<a href="/petugas">
+					<span class="material-icons-sharp">person_outline</span>
+					<h3>Petugas</h3>
+				</a>
+				<a href="#">
+					<span class="material-icons-sharp">logout</span>
+					<h3>Logout</h3>
+				</a>
+			</div>
+		</aside>
+		{{!------------------- END OF ASIDE ------------------}}
+
+		{{!------------------- MAIN CONTENT -------------------}}
+		<main>
+			<h1>Anggota</h1>
+			
+			<div class="card-form">
+				<h2>Tambah Anggota</h2>
+				<div class="form">
+					<form action="/save/anggota" method="post">
+						<div class="form-control">
+							<label for="nama">Nama lengkap</label>
+							<input type="text" name="nama_anggota" id="nama_anggota" placeholder="Nama lengkap calon anggota">
+						</div>
+						<div class="form-control">
+							<label for="telepon">No Telepon</label>
+							<input type="number" name="telepon_anggota" id="telepon_anggota" placeholder="No telepon calon anggota">
+						</div>
+						<div class="form-control">
+							<label for="alamat">Alamat</label>
+							<input type="text" name="alamat_anggota" id="alamat_anggota" placeholder="Alamat calon anggota">
+						</div>
+						<div class="submit">
+							<button type="submit">Tambah</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="recent-orders">
+				<h2>Daftar Anggota</h2>
+				<table id="tabel-anggota">
+					
+				</table>
+				<a href="#">Show All</a>
+			</div>
+		</main>
+		{{!------------------- END OF MAIN -------------------}}
+
+		<div class="right">
+			<div class="top">
+				<button id="menu-btn">
+					<span class="material-icons-sharp">menu</span>
+				</button>
+				<div class="theme-toggler">
+					<span class="material-icons-sharp active">light_mode</span>
+					<span class="material-icons-sharp">dark_mode</span>
+				</div>
+				<div class="profile">
+					<div class="info">
+						<p>Hey, <b>Farhan</b></p>
+						<small class="text-muted">Admin</small>
+					</div>
+					<div class="profile-photo">
+						<img src="/assets/img/profile-1.png">
+					</div>
+				</div>
+			</div>
+			<!-- END OF TOP -->
+		</div>
+	</div>
+
+	{{!-- Modal Edit --}}
+	<div class="modal-container" id="editModal">
+		<div class="modal">
+			<h2>Ubah Data Anggota</h2>
+			<div class="form">
+				<form action="/update/anggota" method="post">
+					<input type="hidden" id="id_anggota" name="id_anggota">
+					<div class="form-control">
+						<label for="nama">Nama lengkap</label>
+						<input type="text" name="nama_anggota" class="nama_anggota" placeholder="Nama lengkap calon anggota">
+					</div>
+					<div class="form-control">
+						<label for="telepon">No Telepon</label>
+						<input type="number" name="telepon_anggota" class="telepon_anggota" placeholder="No telepon calon anggota">
+					</div>
+					<div class="form-control">
+						<label for="alamat">Alamat</label>
+						<input type="text" name="alamat_anggota" class="alamat_anggota" placeholder="Alamat calon anggota">
+					</div>
+					<div class="submit">
+						<button type="submit">Ubah</button>
+						<a type="button" id="closeEditModal">Batal</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	{{!-- End Modal Edit --}}
+
+	{{!-- Modal Hapus --}}
+	<div class="modal-container" id="hapusModal">
+		<div class="modal">
+			<h2>Hapus Data Anggota</h2>
+			<div class="form">
+				<form action="/delete/anggota" method="post">
+					<input type="hidden" class="id_anggota_hapus" name="id_anggota">
+					<p>Anda yakin mau menghapus data ini?</p>
+					<div class="submit">
+						<button type="submit">Ya!</button>
+						<a type="button" id="closeHapusModal">Batal</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	{{!-- End Modal Hapus --}}
+    
+	<script src="/assets/js/jquery-3.3.1.js"></script>
+
+	{{!-- My Script --}}
+	<script src="assets/js/script.js"></script>
+	<script src="/assets/js/functions.js"></script>
+	
+	{{!-- Page Script --}}
+	<script src="/assets/js/anggota.js"></script>
+</body>
+</html>

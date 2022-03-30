@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Buku | Sipinjam</title>
+
+	<!-- Material CDN -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+	<!-- My CSS -->
+	<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+	<div class="container">
+		<!--  ASIDE  -->
+		<aside>
+			<div class="top">
+				<div class="logo">
+					<img src="/assets/img/logo.png">
+					<h2>SI<span class="danger">PINJAM</span></h2>
+				</div>
+				<div class="close" id="close-btn">
+					<span class="material-icons-sharp">close</span>
+				</div>
+			</div>
+
+			<div class="sidebar">
+				<a href="/">
+					<span class="material-icons-sharp">grid_view</span>
+					<h3>Dashboard</h3>
+				</a>
+				<a href="/peminjaman">
+					<span class="material-icons-sharp">receipt_long</span>
+					<h3>Peminjaman</h3>
+				</a>
+				<a href="/pengembalian">
+					<span class="material-icons-sharp">receipt</span>
+					<h3>Pengembalian</h3>
+				</a>
+				<a href="/buku"  class="active">
+					<span class="material-icons-sharp">library_books</span>
+					<h3>Buku</h3>
+				</a>
+				<a href="/anggota">
+					<span class="material-icons-sharp">groups</span>
+					<h3>Anggota</h3>
+				</a>
+				<a href="/petugas">
+					<span class="material-icons-sharp">person_outline</span>
+					<h3>Petugas</h3>
+				</a>
+				<a href="#">
+					<span class="material-icons-sharp">logout</span>
+					<h3>Logout</h3>
+				</a>
+			</div>
+		</aside>
+		<!--  END OF ASIDE  -->
+
+		<!--  MAIN CONTENT  -->
+		<main>
+			<h1>Buku</h1>
+			
+			<div class="card-form">
+				<h2>Tambah Buku</h2>
+				<div class="form">
+					<form action="/save/buku" method="post">
+						<div class="form-control">
+							<label for="judul">Judul Buku</label>
+							<input type="text" name="judul" id="judul" placeholder="Judul buku">
+						</div>
+						<div class="form-control">
+							<label for="penerbit">Penerbit</label>
+							<input type="text" name="penerbit" id="penerbit" placeholder="Penerbit buku">
+						</div>
+						<div class="form-control">
+							<label for="penulis">Penulis</label>
+							<input type="text" name="penulis" id="penulis" placeholder="Penulis buku">
+						</div>
+						<div class="form-control">
+							<label for="tahun_terbit">Tahun Terbit</label>
+							<input type="number" name="tahun_terbit" id="tahun_terbit" placeholder="Tahun terbit buku">
+						</div>
+						<div class="form-control">
+							<label for="stok">Stok</label>
+							<input type="number" name="stok" id="stok" placeholder="Ketersediaan buku">
+						</div>
+						<div class="submit">
+							<button type="submit">Tambah</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="recent-orders">
+				<h2>Daftar Buku</h2>
+				<table id="tabel-buku">
+					
+				</table>
+				<a href="#">Show All</a>
+			</div>
+		</main>
+		<!--  END OF MAIN  -->
+
+		<div class="right">
+			<div class="top">
+				<button id="menu-btn">
+					<span class="material-icons-sharp">menu</span>
+				</button>
+				<div class="theme-toggler">
+					<span class="material-icons-sharp active">light_mode</span>
+					<span class="material-icons-sharp">dark_mode</span>
+				</div>
+				<div class="profile">
+					<div class="info">
+						<p>Hey, <b>Farhan</b></p>
+						<small class="text-muted">Admin</small>
+					</div>
+					<div class="profile-photo">
+						<img src="/assets/img/profile-1.png">
+					</div>
+				</div>
+			</div>
+			<!-- END OF TOP -->
+
+			<div class="recent-updates">
+				<h2>Recent Updates</h2>
+				<div class="updates">
+					<div class="update">
+						<canvas id="chartBook"></canvas>
+					</div>
+				</div>
+			</div>
+			<!-- END OF RECENT UPDATES -->
+		</div>
+	</div>
+
+	{{!-- Modal Edit --}}
+	<div class="modal-container" id="editModal">
+		<div class="modal">
+			<h2>Ubah Data Anggota</h2>
+			<div class="form">
+				<form action="/update/buku" method="post">
+					<input type="hidden" class="id" name="id">
+					<div class="form-control">
+							<label for="judul">Judul Buku</label>
+							<input type="text" name="judul" class="judul">
+						</div>
+						<div class="form-control">
+							<label for="penerbit">Penerbit</label>
+							<input type="text" name="penerbit" class="penerbit">
+						</div>
+						<div class="form-control">
+							<label for="penulis">Penulis</label>
+							<input type="text" name="penulis" class="penulis">
+						</div>
+						<div class="form-control">
+							<label for="tahun_terbit">Tahun Terbit</label>
+							<input type="number" name="tahun_terbit" class="tahun_terbit">
+						</div>
+						<div class="form-control">
+							<label for="stok">Stok</label>
+							<input type="number" name="stok" class="stok">
+						</div>
+					<div class="submit">
+						<button type="submit">Ubah</button>
+						<a type="button" id="closeEditModal">Batal</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	{{!-- End Modal Edit --}}
+
+	{{!-- Modal Hapus --}}
+	<div class="modal-container" id="hapusModal">
+		<div class="modal">
+			<h2>Hapus Data Buku</h2>
+			<div class="form">
+				<form action="/delete/buku" method="post">
+					<input type="hidden" class="id_buku" name="id">
+					<p>Anda yakin mau menghapus data ini?</p>
+					<div class="submit">
+						<button type="submit">Ya!</button>
+						<a type="button" id="closeHapusModal">Batal</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	{{!-- End Modal Hapus --}}
+    
+	<script src="/assets/js/jquery-3.3.1.js"></script>
+
+	{{!-- Chart JS --}}
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+	<script>
+		const ctx = document.getElementById('chartBook').getContext('2d');
+		const myChart = new Chart(ctx, {
+			type: 'bar',
+			data: {
+				labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+				datasets: [{
+					label: '# of Votes',
+					data: [12, 19, 3, 5, 2, 3],
+					backgroundColor: [
+						'rgba(255, 99, 132, 0.2)',
+						'rgba(54, 162, 235, 0.2)',
+						'rgba(255, 206, 86, 0.2)',
+						'rgba(75, 192, 192, 0.2)',
+						'rgba(153, 102, 255, 0.2)',
+						'rgba(255, 159, 64, 0.2)'
+					],
+					borderColor: [
+						'rgba(255, 99, 132, 1)',
+						'rgba(54, 162, 235, 1)',
+						'rgba(255, 206, 86, 1)',
+						'rgba(75, 192, 192, 1)',
+						'rgba(153, 102, 255, 1)',
+						'rgba(255, 159, 64, 1)'
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {
+				scales: {
+					y: {
+						beginAtZero: true
+					}
+				}
+			}
+		});
+	</script>
+
+	{{!-- My Script --}}
+	<script src="/assets/js/script.js"></script>
+	<script src="/assets/js/functions.js"></script>
+
+	{{!-- Page Script --}}
+	<script src="/assets/js/buku.js"></script>
+</body>
+</html>
