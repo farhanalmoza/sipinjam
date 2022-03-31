@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    getAnggota.loadData = "/all/anggota";
+    getAnggota.loadData = "/anggota/all";
 });
 
 const getAnggota = {

@@ -26,7 +26,7 @@
 			</div>
 
 			<div class="sidebar">
-				<a href="/">
+				<a href="/dashboard">
 					<span class="material-icons-sharp">grid_view</span>
 					<h3>Dashboard</h3>
 				</a>
@@ -50,7 +50,7 @@
 					<span class="material-icons-sharp">person_outline</span>
 					<h3>Petugas</h3>
 				</a>
-				<a href="#">
+				<a href="/login/logout">
 					<span class="material-icons-sharp">logout</span>
 					<h3>Logout</h3>
 				</a>
@@ -65,7 +65,7 @@
 			<div class="card-form">
 				<h2>Tambah Anggota</h2>
 				<div class="form">
-					<form action="/save/anggota" method="post">
+					<form action="/anggota/save" method="post">
 						<div class="form-control">
 							<label for="nama">Nama lengkap</label>
 							<input type="text" name="nama_anggota" id="nama_anggota" placeholder="Nama lengkap calon anggota">
@@ -123,7 +123,7 @@
 		<div class="modal">
 			<h2>Ubah Data Anggota</h2>
 			<div class="form">
-				<form action="/update/anggota" method="post">
+				<form action="/anggota/update" method="post">
 					<input type="hidden" id="id_anggota" name="id_anggota">
 					<div class="form-control">
 						<label for="nama">Nama lengkap</label>
@@ -152,7 +152,7 @@
 		<div class="modal">
 			<h2>Hapus Data Anggota</h2>
 			<div class="form">
-				<form action="/delete/anggota" method="post">
+				<form action="/anggota/delete" method="post">
 					<input type="hidden" class="id_anggota_hapus" name="id_anggota">
 					<p>Anda yakin mau menghapus data ini?</p>
 					<div class="submit">

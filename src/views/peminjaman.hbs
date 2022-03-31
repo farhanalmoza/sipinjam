@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Pengembalian | Sipinjam</title>
+	<title>Peminjaman | Sipinjam</title>
 
 	<!-- Material CDN -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div class="container">
-		<!--  ASIDE  -->
+		<!-- ASIDE -->
 		<aside>
 			<div class="top">
 				<div class="logo">
@@ -26,15 +26,15 @@
 			</div>
 
 			<div class="sidebar">
-				<a href="/">
+				<a href="/dashboard">
 					<span class="material-icons-sharp">grid_view</span>
 					<h3>Dashboard</h3>
 				</a>
-				<a href="/peminjaman">
+				<a href="/peminjaman" class="active">
 					<span class="material-icons-sharp">receipt_long</span>
 					<h3>Peminjaman</h3>
 				</a>
-				<a href="/pengembalian" class="active">
+				<a href="/pengembalian">
 					<span class="material-icons-sharp">receipt</span>
 					<h3>Pengembalian</h3>
 				</a>
@@ -50,60 +50,51 @@
 					<span class="material-icons-sharp">person_outline</span>
 					<h3>Petugas</h3>
 				</a>
-				<a href="#">
+				<a href="/login/logout">
 					<span class="material-icons-sharp">logout</span>
 					<h3>Logout</h3>
 				</a>
 			</div>
 		</aside>
-		<!--  END OF ASIDE  -->
+		<!-- END OF ASIDE -->
 
-		<!--  MAIN CONTENT  -->
+		<!-- MAIN CONTENT -->
 		<main>
-			<h1>Pengembalian</h1>
+			<h1>Peminjaman</h1>
 			
 			<div class="card-form">
-				<h2>Tambah Pengembalian</h2>
+				<h2>Tambah Peminjaman</h2>
 				<div class="form">
-					<form action="#">
+					<form action="/peminjaman/save" method="post">
+						<div class="form-control">
+							<label for="tgl_pinjam">Tanggal Peminjaman</label>
+							<input type="date" name="tgl_pinjam" id="tgl_pinjam">
+						</div>
 						<div class="form-control">
 							<label for="tgl_kembali">Tanggal Pengembalian</label>
 							<input type="date" name="tgl_kembali" id="tgl_kembali" value="none">
 						</div>
 						<div class="form-control">
-							<label for="denda">Denda</label>
-							<input type="number" name="denda" id="denda">
-						</div>
-						<div class="form-control">
-							<label for="buku">Buku</label>
-							<select name="buku" id="buku">
+							<label for="id_anggota">Nomor Anggota</label>
+							<select name="id_anggota" id="id_anggota">
 								
 							</select>
 						</div>
 						<div class="form-control">
-							<label for="no_anggota">Nomor Anggota</label>
-							<select name="no_anggota" id="no_anggota">
+							<label for="id_buku">Buku</label>
+							<select name="id_buku" id="buku">
 								
 							</select>
 						</div>
-						<div class="form-control">
-							<label for="no_petugas">Petugas</label>
-							<select name="no_petugas" id="no_petugas">
-								<option value="1">Petugas 1</option>
-								<option value="1">Petugas 1</option>
-								<option value="1">Petugas 1</option>
-								<option value="1">Petugas 1</option>
-							</select>
-						</div>
+						<input type="hidden" name="id_petugas" value="2">
 						<div class="submit">
 							<button type="submit">Tambah</button>
 						</div>
 					</form>
 				</div>
 			</div>
-			
 		</main>
-		<!--  END OF MAIN  -->
+		<!-- END OF MAIN -->
 
 		<div class="right">
 			<div class="top">
@@ -136,6 +127,6 @@
 	<script src="/assets/js/functions.js"></script>
 
 	{{!-- Page Script --}}
-	<script src="/assets/js/pengembalian.js"></script>
+	<script src="/assets/js/peminjaman.js"></script>
 </body>
 </html>

@@ -26,7 +26,7 @@
 			</div>
 
 			<div class="sidebar">
-				<a href="/">
+				<a href="/dashboard">
 					<span class="material-icons-sharp">grid_view</span>
 					<h3>Dashboard</h3>
 				</a>
@@ -50,7 +50,7 @@
 					<span class="material-icons-sharp">person_outline</span>
 					<h3>Petugas</h3>
 				</a>
-				<a href="#">
+				<a href="/login/logout">
 					<span class="material-icons-sharp">logout</span>
 					<h3>Logout</h3>
 				</a>
@@ -65,10 +65,16 @@
 			<div class="card-form">
 				<h2>Tambah Buku</h2>
 				<div class="form">
-					<form action="/save/buku" method="post">
+					<form action="/buku/save" method="post">
 						<div class="form-control">
 							<label for="judul">Judul Buku</label>
 							<input type="text" name="judul" id="judul" placeholder="Judul buku">
+						</div>
+						<div class="form-control">
+							<label for="id_kategori">Kategori Buku</label>
+							<select name="id_kategori" id="id_kategori">
+								
+							</select>
 						</div>
 						<div class="form-control">
 							<label for="penerbit">Penerbit</label>
@@ -133,6 +139,16 @@
 				</div>
 			</div>
 			<!-- END OF RECENT UPDATES -->
+
+			<div class="sales-analytics" id="kategori-buku">
+				<h2>Kategori Buku</h2>
+				<div class="item add-kategori">
+					<div>
+						<span class="material-icons-sharp">add</span>
+						<h3>Add Kategori</h3>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -141,8 +157,8 @@
 		<div class="modal">
 			<h2>Ubah Data Anggota</h2>
 			<div class="form">
-				<form action="/update/buku" method="post">
-					<input type="hidden" class="id" name="id">
+				<form action="/buku/update" method="post">
+					<input type="hidden" class="id" name="id_buku">
 					<div class="form-control">
 							<label for="judul">Judul Buku</label>
 							<input type="text" name="judul" class="judul">
@@ -178,8 +194,8 @@
 		<div class="modal">
 			<h2>Hapus Data Buku</h2>
 			<div class="form">
-				<form action="/delete/buku" method="post">
-					<input type="hidden" class="id_buku" name="id">
+				<form action="/buku/delete" method="post">
+					<input type="hidden" class="id_buku" name="id_buku">
 					<p>Anda yakin mau menghapus data ini?</p>
 					<div class="submit">
 						<button type="submit">Ya!</button>
@@ -190,6 +206,44 @@
 		</div>
 	</div>
 	{{!-- End Modal Hapus --}}
+
+	{{!-- Modal Add Kategori --}}
+	<div class="modal-container" id="addKategoriModal">
+		<div class="modal">
+			<h2>Tambah Kategori Buku</h2>
+			<div class="form">
+				<form action="/kategori/save" method="post">
+					<div class="form-control">
+						<label for="kategori">Kategori Buku</label>
+						<input type="text" name="kategori" class="kategori">
+					</div>
+					<div class="submit">
+						<button type="submit">Tambah</button>
+						<a type="button" id="closeAddKategoriModal">Batal</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	{{!-- End Add Kategori Modal --}}
+
+	{{!-- Modal Hapus Kategori --}}
+	<div class="modal-container" id="hapusKategoriModal">
+		<div class="modal">
+			<h2>Hapus Kategori</h2>
+			<div class="form">
+				<form action="/kategori/delete" method="post">
+					<input type="hidden" class="id_kategori" name="id_kategori">
+					<p>Anda yakin mau menghapus data ini?</p>
+					<div class="submit">
+						<button type="submit">Ya!</button>
+						<a type="button" id="closeHapusKategoriModal">Batal</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	{{!-- End Modal Hapus Kategori --}}
     
 	<script src="/assets/js/jquery-3.3.1.js"></script>
 

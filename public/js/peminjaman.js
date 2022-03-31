@@ -1,6 +1,6 @@
 $(document).ready(function(){
-    getAnggota.loadData = "/all/anggota";
-    getBuku.loadData = "/all/buku";
+    getAnggota.loadData = "/anggota/all";
+    getBuku.loadData = "/buku/all";
 });
 
 const getAnggota = {

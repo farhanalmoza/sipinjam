@@ -1,7 +1,7 @@
 $(document).ready(function() {
-    getAnggota.loadData = "/all/anggota";
-    getBuku.loadData = "/all/buku";
-    getPeminjaman.loadData = "/all/peminjaman";
+    getAnggota.loadData = "/anggota/all";
+    getBuku.loadData = "/buku/all";
+    getPeminjaman.loadData = "/peminjaman/all";
 });
 
 const getAnggota = {

@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Dashboard | Sipinjam</title>
+	<title>Pengembalian | Sipinjam</title>
 
 	<!-- Material CDN -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div class="container">
-		<!-- ----------------- ASIDE ----------------- -->
+		<!--  ASIDE  -->
 		<aside>
 			<div class="top">
 				<div class="logo">
@@ -26,7 +26,7 @@
 			</div>
 
 			<div class="sidebar">
-				<a href="/" class="active">
+				<a href="/dashboard">
 					<span class="material-icons-sharp">grid_view</span>
 					<h3>Dashboard</h3>
 				</a>
@@ -34,7 +34,7 @@
 					<span class="material-icons-sharp">receipt_long</span>
 					<h3>Peminjaman</h3>
 				</a>
-				<a href="/pengembalian">
+				<a href="/pengembalian" class="active">
 					<span class="material-icons-sharp">receipt</span>
 					<h3>Pengembalian</h3>
 				</a>
@@ -50,61 +50,60 @@
 					<span class="material-icons-sharp">person_outline</span>
 					<h3>Petugas</h3>
 				</a>
-				<a href="#">
+				<a href="/login/logout">
 					<span class="material-icons-sharp">logout</span>
 					<h3>Logout</h3>
 				</a>
 			</div>
 		</aside>
-		<!-- ----------------- END OF ASIDE ----------------- -->
+		<!--  END OF ASIDE  -->
 
-		<!-- ----------------- MAIN CONTENT ----------------- -->
+		<!--  MAIN CONTENT  -->
 		<main>
-			<h1>Dashboard</h1>
-
-			<div class="date">
-				<input type="date">
+			<h1>Pengembalian</h1>
+			
+			<div class="card-form">
+				<h2>Tambah Pengembalian</h2>
+				<div class="form">
+					<form action="#">
+						<div class="form-control">
+							<label for="tgl_kembali">Tanggal Pengembalian</label>
+							<input type="date" name="tgl_kembali" id="tgl_kembali" value="none">
+						</div>
+						<div class="form-control">
+							<label for="denda">Denda</label>
+							<input type="number" name="denda" id="denda">
+						</div>
+						<div class="form-control">
+							<label for="buku">Buku</label>
+							<select name="buku" id="buku">
+								
+							</select>
+						</div>
+						<div class="form-control">
+							<label for="no_anggota">Nomor Anggota</label>
+							<select name="no_anggota" id="no_anggota">
+								
+							</select>
+						</div>
+						<div class="form-control">
+							<label for="no_petugas">Petugas</label>
+							<select name="no_petugas" id="no_petugas">
+								<option value="1">Petugas 1</option>
+								<option value="1">Petugas 1</option>
+								<option value="1">Petugas 1</option>
+								<option value="1">Petugas 1</option>
+							</select>
+						</div>
+						<div class="submit">
+							<button type="submit">Tambah</button>
+						</div>
+					</form>
+				</div>
 			</div>
-
-			<div class="insights">
-				<div class="sales">
-					<span class="material-icons-sharp">receipt_long</span>
-					<div class="middle">
-						<div class="left">
-							<h3>Total Peminjaman</h3>
-							<h1 class="jumlah-peminjaman">0</h1>
-						</div>
-					</div>
-					
-				</div>
-				<!-- -------------------- END OF SALES -------------------- -->
-				<div class="expanses">
-					<span class="material-icons-sharp">library_books</span>
-					<div class="middle">
-						<div class="left">
-							<h3>Total Buku</h3>
-							<h1 class="jumlah-buku">0</h1>
-						</div>
-					</div>
-					
-				</div>
-				<!-- -------------------- END OF EXPANSES -------------------- -->
-				<div class="income">
-					<span class="material-icons-sharp">groups</span>
-					<div class="middle">
-						<div class="left">
-							<h3>Total Anggota</h3>
-							<h1 class="jumlah-anggota">0</h1>
-						</div>
-					</div>
-					
-				</div>
-				<!-- -------------------- END OF INCOME -------------------- -->
-			</div>
-			<!-- -------------------- END OF INSIGHTS -------------------- -->
-
+			
 		</main>
-		<!-- ----------------- END OF MAIN ----------------- -->
+		<!--  END OF MAIN  -->
 
 		<div class="right">
 			<div class="top">
@@ -126,7 +125,7 @@
 				</div>
 			</div>
 			<!-- END OF TOP -->
-			
+
 		</div>
 	</div>
     
@@ -137,6 +136,6 @@
 	<script src="/assets/js/functions.js"></script>
 
 	{{!-- Page Script --}}
-	<script src="/assets/js/dashboard.js"></script>
+	<script src="/assets/js/pengembalian.js"></script>
 </body>
 </html>

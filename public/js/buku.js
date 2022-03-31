@@ -1,5 +1,6 @@
 $(document).ready(function() {
-    getBuku.loadData = "/all/buku";
+    getBuku.loadData = "/buku/all";
+    getKategori.loadData = "/kategori/all";
 });
 
 const getBuku = {
@@ -25,7 +26,7 @@ const getBuku = {
             table.append(`
                 <tr>
                     <td>${buku[i].judul}</td>
-                    <td>${buku[i].pengarang}</td>
+                    <td>${buku[i].penulis}</td>
                     <td>${buku[i].penerbit}</td>
                     <td>${buku[i].tahun_terbit}</td>
                     <td>${buku[i].stok}</td>
@@ -42,11 +43,53 @@ const getBuku = {
     }
 }
 
+const getKategori = {
+    set loadData(data) {
+        const url = "http://localhost:8000" + data;
+        Functions.prototype.getRequest(getKategori, url);
+    },
+    set successData(response) {
+        let kategori = response;
+        const allKategori = $(".sales-analytics");
+        for (let i = 0; i < kategori.length; i++) {
+            allKategori.append(`
+            <div class="item online">
+                <div class="right">
+                    <div class="info">
+                        <h3 class="nama-kategori">${kategori[i].kategori}</h3>
+                    </div>
+                    <h3 class="danger delete" data-id="${kategori[i].id}">Hapus</h3>
+                </div>
+            </div>
+            `);
+        }
+
+        // for form
+        const option = document.createElement("option");
+        option.value = "";
+        option.innerHTML = "Pilih Kategori";
+        document.getElementById("id_kategori").appendChild(option);
+        for (let i = 0; i < kategori.length; i++) {
+            const option = document.createElement("option");
+            option.value = kategori[i].id;
+            option.innerHTML = kategori[i].kategori;
+            document.getElementById("id_kategori").appendChild(option);
+        }
+    }
+}
+
+
 const editModal = document.querySelector('#editModal');
 const closeEditModal = document.getElementById('closeEditModal');
-
 const hapusModal = document.querySelector('#hapusModal');
 const closeHapusModal = document.getElementById('closeHapusModal');
+
+const addKategoriModal = document.querySelector('#addKategoriModal');
+const addKategori = document.querySelector('.add-kategori');
+const closeAddKategoriModal = document.getElementById('closeAddKategoriModal');
+const hapusKategoriModal = document.querySelector('#hapusKategoriModal');
+const closeHapusKategoriModal = document.getElementById('closeHapusKategoriModal');
+
 
 $('#tabel-buku').on('click', '.edit', function() {
     var id = $(this).data('id');
@@ -76,4 +119,20 @@ $('#tabel-buku').on('click', '.delete', function() {
 })
 closeHapusModal.addEventListener('click', function() {
     hapusModal.classList.remove('show');
+});
+
+addKategori.addEventListener('click', function() {
+    addKategoriModal.classList.add('show');
+});
+closeAddKategoriModal.addEventListener('click', function() {
+    addKategoriModal.classList.remove('show');
+});
+
+$('#kategori-buku').on('click', '.delete', function() {
+    var id_kategori = $(this).data('id');
+    $('.id_kategori').val(id_kategori);
+    hapusKategoriModal.classList.add('show');
+});
+closeHapusKategoriModal.addEventListener('click', function() {
+    hapusKategoriModal.classList.remove('show');
 });
