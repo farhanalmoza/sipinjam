@@ -1,4 +1,4 @@
-const config = require('../configs/database');
+const config   = require('../configs/database');
 let mysql      = require('mysql');
 let pool       = mysql.createPool(config);
 
@@ -13,7 +13,7 @@ module.exports = {
         });
     },
     all(req,res){
-        let sql = "SELECT * FROM buku";
+        let sql = "SELECT * FROM buku ORDER BY id DESC";
         let query = pool.query(sql, (err, results) => {
             if(err) throw err;
             return res.json(results);

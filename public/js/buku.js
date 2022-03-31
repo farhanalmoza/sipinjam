@@ -3,6 +3,8 @@ $(document).ready(function() {
     getKategori.loadData = "/kategori/all";
 });
 
+window.jsPDF = window.jspdf.jsPDF;
+
 const getBuku = {
     set loadData(data) {
         const url = "http://localhost:8000" + data;
@@ -11,7 +13,7 @@ const getBuku = {
     set successData(response) {
         let buku = response;
         const table = $("#tabel-buku");
-        table.empty();
+        // table.empty();
         table.append(`
             <tr>
                 <th width="35%">Judul</th>
@@ -78,7 +80,6 @@ const getKategori = {
     }
 }
 
-
 const editModal = document.querySelector('#editModal');
 const closeEditModal = document.getElementById('closeEditModal');
 const hapusModal = document.querySelector('#hapusModal');
@@ -89,7 +90,6 @@ const addKategori = document.querySelector('.add-kategori');
 const closeAddKategoriModal = document.getElementById('closeAddKategoriModal');
 const hapusKategoriModal = document.querySelector('#hapusKategoriModal');
 const closeHapusKategoriModal = document.getElementById('closeHapusKategoriModal');
-
 
 $('#tabel-buku').on('click', '.edit', function() {
     var id = $(this).data('id');
@@ -136,3 +136,33 @@ $('#kategori-buku').on('click', '.delete', function() {
 closeHapusKategoriModal.addEventListener('click', function() {
     hapusKategoriModal.classList.remove('show');
 });
+
+function generatePDF() {
+    reportBuku.loadData = "/buku/all";
+}
+
+const reportBuku = {
+    set loadData(data) {
+        const url = "http://localhost:8000" + data;
+        Functions.prototype.getRequest(reportBuku, url);
+    },
+    set successData(response) {
+        var buku = "Daftar Buku Sipinjam \n";
+        for (let i = 0; i < response.length; i++) {
+            let judul = JSON.stringify(response[i].judul);
+            let penulis = JSON.stringify(response[i].penulis);
+            let penerbit = JSON.stringify(response[i].penerbit);
+            let tahun_terbit = JSON.stringify(response[i].tahun_terbit);
+            let stok = JSON.stringify(response[i].stok);
+            buku = buku + "\n"
+                   + "Judul : " + judul + "\n"
+                   + "Penulis : " + penulis + "\n"
+                   + "Penerbit : " + penerbit + "\n"
+                   + "Tahun Terbit : " + tahun_terbit + "\n"
+                   + "Stok : " + stok + "\n";
+        }
+        const doc = new jsPDF();
+        doc.text(buku, 10, 10);
+        doc.save("Laporan Buku.pdf");
+    }
+}

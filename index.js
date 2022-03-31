@@ -26,8 +26,7 @@ app.use(session({
   secret: 't@1k0ch3ng',
   name: 'secretName',
   cookie: {
-      sameSite: true,
-      maxAge: 60000
+      sameSite: true
   },
 }))
 
