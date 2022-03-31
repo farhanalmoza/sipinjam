@@ -8,6 +8,7 @@ const flash = require('req-flash');
 const app = express();
 
 // Definisi lokasi file router
+const homeRouter = require('./src/routes/router-home');
 const loginRoutes = require('./src/routes/router-login');
 const registerRoutes = require('./src/routes/router-register');
 const dashboardRoutes = require('./src/routes/router-dashboard');
@@ -45,6 +46,9 @@ app.use(function(req, res, next) {
   res.setHeader('Pragma', 'no-cache');
   next();
 });
+
+// route home
+app.use('/', homeRouter);
 
 // route auth
 app.use('/login', loginRoutes);
