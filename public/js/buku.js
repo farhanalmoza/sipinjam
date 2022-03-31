@@ -1,6 +1,7 @@
 $(document).ready(function() {
     getBuku.loadData = "/buku/all";
     getKategori.loadData = "/kategori/all";
+    getPetugas.loadData = "/petugas/profile";
 });
 
 window.jsPDF = window.jspdf.jsPDF;
@@ -164,5 +165,16 @@ const reportBuku = {
         const doc = new jsPDF();
         doc.text(buku, 10, 10);
         doc.save("Laporan Buku.pdf");
+    }
+}
+
+const getPetugas = {
+    set loadData(data) {
+        const url = "http://localhost:8000" + data;
+        Functions.prototype.getRequest(getPetugas, url);
+    },
+    set successData(response) {
+        const data = response;
+        document.getElementById("nama-petugas").innerHTML = data[0].nama;
     }
 }

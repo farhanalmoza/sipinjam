@@ -2,6 +2,7 @@ $(document).ready(function() {
     getAnggota.loadData = "/anggota/all";
     getBuku.loadData = "/buku/all";
     getPeminjaman.loadData = "/peminjaman/all";
+    getPetugas.loadData = "/petugas/profile";
     bukuChart();
 });
 
@@ -106,3 +107,14 @@ const myBukuChart = new Chart(
     document.getElementById('bukuChart'),
     config
 );
+
+const getPetugas = {
+    set loadData(data) {
+        const url = "http://localhost:8000" + data;
+        Functions.prototype.getRequest(getPetugas, url);
+    },
+    set successData(response) {
+        const data = response;
+        document.getElementById("nama-petugas").innerHTML = data[0].nama;
+    }
+}

@@ -1,5 +1,6 @@
 $(document).ready(function(){
     getAnggota.loadData = "/anggota/all";
+    getPetugas.loadData = "/petugas/profile";
 });
 
 const getAnggota = {
@@ -67,3 +68,14 @@ $('#tabel-anggota').on('click', '.delete', function() {
 closeHapusModal.addEventListener('click', function() {
     hapusModal.classList.remove('show');
 });
+
+const getPetugas = {
+    set loadData(data) {
+        const url = "http://localhost:8000" + data;
+        Functions.prototype.getRequest(getPetugas, url);
+    },
+    set successData(response) {
+        const data = response;
+        document.getElementById("nama-petugas").innerHTML = data[0].nama;
+    }
+}

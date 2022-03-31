@@ -1,6 +1,7 @@
 $(document).ready(function(){
     getAnggota.loadData = "/anggota/all";
     getBuku.loadData = "/buku/all";
+    getPetugas.loadData = "/petugas/profile";
 });
 
 const getAnggota = {
@@ -40,5 +41,16 @@ const getBuku = {
             option.innerHTML = data[i].judul;
             document.getElementById("buku").appendChild(option);
         }
+    }
+}
+
+const getPetugas = {
+    set loadData(data) {
+        const url = "http://localhost:8000" + data;
+        Functions.prototype.getRequest(getPetugas, url);
+    },
+    set successData(response) {
+        const data = response;
+        document.getElementById("nama-petugas").innerHTML = data[0].nama;
     }
 }

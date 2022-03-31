@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Dashboard | Sipinjam</title>
+	<title>Pengembalian | Sipinjam</title>
 
 	<!-- Material CDN -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div class="container">
-		<!-- ----------------- ASIDE ----------------- -->
+		<!--  ASIDE  -->
 		<aside>
 			<div class="top">
 				<div class="logo">
@@ -26,7 +26,7 @@
 			</div>
 
 			<div class="sidebar">
-				<a href="/dashboard" class="active">
+				<a href="/dashboard">
 					<span class="material-icons-sharp">grid_view</span>
 					<h3>Dashboard</h3>
 				</a>
@@ -46,7 +46,7 @@
 					<span class="material-icons-sharp">groups</span>
 					<h3>Anggota</h3>
 				</a>
-				<a href="/petugas">
+				<a href="/petugas" class="active">
 					<span class="material-icons-sharp">person_outline</span>
 					<h3>Petugas</h3>
 				</a>
@@ -56,60 +56,29 @@
 				</a>
 			</div>
 		</aside>
-		<!-- ----------------- END OF ASIDE ----------------- -->
+		<!--  END OF ASIDE  -->
 
-		<!-- ----------------- MAIN CONTENT ----------------- -->
+		<!--  MAIN CONTENT  -->
 		<main>
-			<h1>Dashboard</h1>
-
-			<div class="date">
-				<input type="date">
-			</div>
-
-			<div class="insights">
-				<div class="sales">
-					<span class="material-icons-sharp">receipt_long</span>
-					<div class="middle">
-						<div class="left">
-							<h3>Total Peminjaman</h3>
-							<h1 class="jumlah-peminjaman">0</h1>
+			<h1>Profile Petugas</h1>
+			
+			<div class="card-form">
+				<div class="form">
+					<form action="#">
+						<div class="form-control">
+							<label for="nama">Nama Petugas</label>
+							<input type="text" name="nama" id="nama" disabled="disabled">
 						</div>
-					</div>
-					
-				</div>
-				<!-- -------------------- END OF SALES -------------------- -->
-				<div class="expanses">
-					<span class="material-icons-sharp">library_books</span>
-					<div class="middle">
-						<div class="left">
-							<h3>Total Buku</h3>
-							<h1 class="jumlah-buku">0</h1>
+						<div class="form-control">
+							<label for="username">Username</label>
+							<input type="text" name="username" id="username" disabled="disabled">
 						</div>
-					</div>
-					
+					</form>
 				</div>
-				<!-- -------------------- END OF EXPANSES -------------------- -->
-				<div class="income">
-					<span class="material-icons-sharp">groups</span>
-					<div class="middle">
-						<div class="left">
-							<h3>Total Anggota</h3>
-							<h1 class="jumlah-anggota">0</h1>
-						</div>
-					</div>
-					
-				</div>
-				<!-- -------------------- END OF INCOME -------------------- -->
 			</div>
-			<!-- -------------------- END OF INSIGHTS -------------------- -->
-
-			<div class="recent-orders">
-				<h2>Perseberan Buku</h2>
-				<canvas id="bukuChart"></canvas>
-				<a href=""></a>
-			</div>
+			
 		</main>
-		<!-- ----------------- END OF MAIN ----------------- -->
+		<!--  END OF MAIN  -->
 
 		<div class="right">
 			<div class="top">
@@ -131,20 +100,17 @@
 				</div>
 			</div>
 			<!-- END OF TOP -->
-			
+
 		</div>
 	</div>
     
 	<script src="/assets/js/jquery-3.3.1.js"></script>
-
-	{{!-- Chart JS --}}
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 
 	{{!-- My Script --}}
 	<script src="/assets/js/script.js"></script>
 	<script src="/assets/js/functions.js"></script>
 
 	{{!-- Page Script --}}
-	<script src="/assets/js/dashboard.js"></script>
+	<script src="/assets/js/petugas.js"></script>
 </body>
 </html>

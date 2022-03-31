@@ -17,7 +17,7 @@ const bukuRoutes = require('./src/routes/router-buku');
 const kategoriRoutes = require('./src/routes/router-kategori');
 const peminjamanRoutes = require('./src/routes/router-peminjaman');
 const pengembalianRoutes = require('./src/routes/router-pengembalian');
-// const petugasRoutes = require('./src/routes/router-petugas');
+const petugasRoutes = require('./src/routes/router-petugas.js');
 
 // Configurasi library session
 app.use(session({
@@ -60,6 +60,7 @@ app.use('/buku', bukuRoutes);
 app.use('/kategori', kategoriRoutes);
 app.use('/peminjaman', peminjamanRoutes);
 app.use('/pengembalian', pengembalianRoutes);
+app.use('/petugas', petugasRoutes);
 
 //server listening
 app.listen(8000, () => {
