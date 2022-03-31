@@ -68,7 +68,7 @@
 					<form action="/peminjaman/save" method="post">
 						<div class="form-control">
 							<label for="tgl_pinjam">Tanggal Peminjaman</label>
-							<input type="date" name="tgl_pinjam" id="tgl_pinjam">
+							<input type="date" name="tgl_pinjam" id="tgl_pinjam" disabled>
 						</div>
 						<div class="form-control">
 							<label for="tgl_kembali">Tanggal Pengembalian</label>
@@ -86,7 +86,7 @@
 								
 							</select>
 						</div>
-						<input type="hidden" name="id_petugas" value="2">
+						<input type="hidden" name="id_petugas" id="id_petugas">
 						<div class="submit">
 							<button type="submit">Tambah</button>
 						</div>
@@ -99,7 +99,7 @@
 				<table id="tabel-peminjaman">
 					
 				</table>
-				<a href="#" onclick="generatePDF()">Download PDF</a>
+				{{!-- <a href="#" onclick="generatePDF()">Download PDF</a> --}}
 			</div>
 		</main>
 		<!-- END OF MAIN -->

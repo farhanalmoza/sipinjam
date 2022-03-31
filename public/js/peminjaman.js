@@ -3,6 +3,14 @@ $(document).ready(function(){
     getBuku.loadData = "/buku/all";
     getPeminjaman.loadData = "/peminjaman/all";
     getPetugas.loadData = "/petugas/profile";
+
+    // date today
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const yyyy = today.getFullYear();
+    const todayDate = yyyy + '-' + mm + '-' + dd;
+    $('#tgl_pinjam').val(todayDate);
 });
 
 const getAnggota = {
@@ -53,6 +61,7 @@ const getPetugas = {
     set successData(response) {
         const data = response;
         document.getElementById("nama-petugas").innerHTML = data[0].nama;
+        document.getElementById("id_petugas").value = data[0].id;
     }
 }
 
@@ -66,6 +75,7 @@ const getPeminjaman = {
         const table = $('#tabel-peminjaman');
         table.append(`
             <tr>
+                <th>No Peminjaman</th>
                 <th width="35%">Tanggal Pinjam</th>
                 <th>Peminjam</th>
                 <th>Buku</th>
@@ -85,6 +95,7 @@ const getPeminjaman = {
             const tgl_pinjam = `${tanggal} ${bln} ${tahun}`;
             table.append(`
                 <tr>
+                    <td>${data[i].id}</td>
                     <td>${tgl_pinjam}</td>
                     <td>${data[i].nama}</td>
                     <td>${data[i].judul}</td>

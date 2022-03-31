@@ -65,36 +65,33 @@
 			<div class="card-form">
 				<h2>Tambah Pengembalian</h2>
 				<div class="form">
-					<form action="#">
+					<form action="/pengembalian/save" method="post">
 						<div class="form-control">
 							<label for="tgl_kembali">Tanggal Pengembalian</label>
-							<input type="date" name="tgl_kembali" id="tgl_kembali" value="none">
+							<input type="date" id="tgl_kembali_display" disabled>
+							<input type="hidden" name="tgl_kembali" id="tgl_kembali">
+						</div>
+						<div class="form-control">
+							<label for="no_peminjaman">Nomor Peminjaman</label>
+							<select name="no_peminjaman" id="no_peminjaman">
+								
+							</select>
+						</div>
+						<div class="form-control">
+							<label for="judul_buku">Buku</label>
+							<input type="text" name="judul_buku" id="judul_buku" disabled>
+							<input type="hidden" name="id_buku" id="id_buku">
+						</div>
+						<div class="form-control">
+							<label for="nama_anggota">Nama Peminjam</label>
+							<input type="text" name="nama_anggota" id="nama_anggota" disabled>
+							<input type="hidden" name="id_anggota" id="id_anggota">
 						</div>
 						<div class="form-control">
 							<label for="denda">Denda</label>
 							<input type="number" name="denda" id="denda">
 						</div>
-						<div class="form-control">
-							<label for="buku">Buku</label>
-							<select name="buku" id="buku">
-								
-							</select>
-						</div>
-						<div class="form-control">
-							<label for="no_anggota">Nomor Anggota</label>
-							<select name="no_anggota" id="no_anggota">
-								
-							</select>
-						</div>
-						<div class="form-control">
-							<label for="no_petugas">Petugas</label>
-							<select name="no_petugas" id="no_petugas">
-								<option value="1">Petugas 1</option>
-								<option value="1">Petugas 1</option>
-								<option value="1">Petugas 1</option>
-								<option value="1">Petugas 1</option>
-							</select>
-						</div>
+						<input type="hidden" name="id_petugas" id="id_petugas">
 						<div class="submit">
 							<button type="submit">Tambah</button>
 						</div>

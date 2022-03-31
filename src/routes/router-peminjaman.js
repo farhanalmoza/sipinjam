@@ -7,5 +7,6 @@ router.get('/all', verifyUser.isLogin, peminjamanController.all);
 router.post('/save', verifyUser.isLogin, peminjamanController.save);
 router.post('/update', verifyUser.isLogin, peminjamanController.update);
 router.post('/delete', verifyUser.isLogin, peminjamanController.delete);
+router.get('/detail/:id', verifyUser.isLogin, peminjamanController.getById);
 
 module.exports = router;
