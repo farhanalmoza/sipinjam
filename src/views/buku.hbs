@@ -150,25 +150,31 @@
 				<form action="/buku/update" method="post">
 					<input type="hidden" class="id" name="id_buku">
 					<div class="form-control">
-							<label for="judul">Judul Buku</label>
-							<input type="text" name="judul" class="judul">
-						</div>
-						<div class="form-control">
-							<label for="penerbit">Penerbit</label>
-							<input type="text" name="penerbit" class="penerbit">
-						</div>
-						<div class="form-control">
-							<label for="penulis">Penulis</label>
-							<input type="text" name="penulis" class="penulis">
-						</div>
-						<div class="form-control">
-							<label for="tahun_terbit">Tahun Terbit</label>
-							<input type="number" name="tahun_terbit" class="tahun_terbit">
-						</div>
-						<div class="form-control">
-							<label for="stok">Stok</label>
-							<input type="number" name="stok" class="stok">
-						</div>
+						<label for="judul">Judul Buku</label>
+						<input type="text" name="judul" class="judul">
+					</div>
+					<div class="form-control">
+						<label for="id_kategori">Kategori Buku</label>
+						<select name="id_kategori" class="id_kategori">
+							
+						</select>
+					</div>
+					<div class="form-control">
+						<label for="penerbit">Penerbit</label>
+						<input type="text" name="penerbit" class="penerbit">
+					</div>
+					<div class="form-control">
+						<label for="penulis">Penulis</label>
+						<input type="text" name="penulis" class="penulis">
+					</div>
+					<div class="form-control">
+						<label for="tahun_terbit">Tahun Terbit</label>
+						<input type="number" name="tahun_terbit" class="tahun_terbit">
+					</div>
+					<div class="form-control">
+						<label for="stok">Stok</label>
+						<input type="number" name="stok" class="stok">
+					</div>
 					<div class="submit">
 						<button type="submit">Ubah</button>
 						<a type="button" id="closeEditModal">Batal</a>

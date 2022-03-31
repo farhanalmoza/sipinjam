@@ -20,7 +20,12 @@ module.exports = {
         });
     },
     save(req,res){
-        let data = {judul: req.body.judul, penerbit: req.body.penerbit, penulis: req.body.penulis, tahun_terbit: req.body.tahun_terbit, stok: req.body.stok};
+        let data = {judul: req.body.judul,
+                    id_kategori: req.body.id_kategori,
+                    penerbit: req.body.penerbit,
+                    penulis: req.body.penulis,
+                    tahun_terbit: req.body.tahun_terbit,
+                    stok: req.body.stok};
         let sql = "INSERT INTO buku SET ?";
         let query = pool.query(sql, data,(err, results) => {
             if(err) throw err;
@@ -36,6 +41,7 @@ module.exports = {
     },
     update(req,res){
         let sql = "UPDATE buku SET judul='"+req.body.judul
+                    +"', id_kategori='"+req.body.id_kategori
                     +"', penerbit='"+req.body.penerbit
                     +"', penulis='"+req.body.penulis
                     +"', tahun_terbit='"+req.body.tahun_terbit

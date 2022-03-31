@@ -36,6 +36,7 @@ const getBuku = {
                     <td class="danger delete" data-id="${buku[i].id}">Hapus</td>
                     <td class="primary edit" data-id="${buku[i].id}"
                                              data-judul="${buku[i].judul}"
+                                             data-kategori="${buku[i].id_kategori}"
                                              data-penulis="${buku[i].penulis}"
                                              data-penerbit="${buku[i].penerbit}"
                                              data-tahun_terbit="${buku[i].tahun_terbit}"
@@ -67,7 +68,7 @@ const getKategori = {
             `);
         }
 
-        // for form
+        // for form add
         const option = document.createElement("option");
         option.value = "";
         option.innerHTML = "Pilih Kategori";
@@ -77,6 +78,18 @@ const getKategori = {
             option.value = kategori[i].id;
             option.innerHTML = kategori[i].kategori;
             document.getElementById("id_kategori").appendChild(option);
+        }
+
+        // for form update
+        const optionUpdate = document.createElement("option");
+        optionUpdate.value = "";
+        optionUpdate.innerHTML = "Pilih Kategori";
+        document.getElementsByClassName("id_kategori")[0].appendChild(optionUpdate);
+        for (let i = 0; i < kategori.length; i++) {
+            const optionUpdate = document.createElement("option");
+            optionUpdate.value = kategori[i].id;
+            optionUpdate.innerHTML = kategori[i].kategori;
+            document.getElementsByClassName("id_kategori")[0].appendChild(optionUpdate);
         }
     }
 }
@@ -95,12 +108,14 @@ const closeHapusKategoriModal = document.getElementById('closeHapusKategoriModal
 $('#tabel-buku').on('click', '.edit', function() {
     var id = $(this).data('id');
     var judul = $(this).data('judul');
+    var kategori = $(this).data('kategori');
     var penerbit = $(this).data('penerbit');
     var penulis = $(this).data('penulis');
     var tahun_terbit = $(this).data('tahun_terbit');
     var stok = $(this).data('stok');
     $('.id').val(id);
     $('.judul').val(judul);
+    $('.id_kategori').val(kategori);
     $('.penerbit').val(penerbit);
     $('.penulis').val(penulis);
     $('.tahun_terbit').val(tahun_terbit);
