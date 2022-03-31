@@ -104,3 +104,28 @@ const getPeminjaman = {
         }
     }
 }
+
+function exportExcel() {
+    var dataType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+    var tableSelect = document.getElementById('tabel-peminjaman');
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    
+    // filename
+    var filename = 'Laporan Peminjaman Buku.xls';
+
+    // Specify file as an attachment or viewing in browser
+    if (navigator.msSaveOrOpenBlob) {
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob(blob, filename);
+    } else {
+        var link = document.createElement('a');
+        link.href = 'data:' + dataType + ', ' + tableHTML;
+        link.download = filename;
+        link.target = '_blank';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+}
