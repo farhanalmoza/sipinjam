@@ -13,7 +13,10 @@ module.exports = {
         });
     },
     all(req,res){
-        let sql = "SELECT * FROM peminjaman";
+        let sql = `SELECT * FROM peminjaman
+                    JOIN anggota ON peminjaman.id_anggota = anggota.id
+                    JOIN buku ON peminjaman.id_buku = buku.id
+                    JOIN petugas ON peminjaman.id_petugas = petugas.id`;
         let query = pool.query(sql, (err, results) => {
             if(err) throw err;
             return res.json(results);
