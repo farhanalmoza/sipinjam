@@ -15,7 +15,7 @@ $(document).ready(function(){
 
 const getAnggota = {
     set loadData(data) {
-        const url = "http://localhost:8000" + data;
+        const url = "http://cadf-20-213-242-75.ngrok.io" + data;
         Functions.prototype.getRequest(getAnggota, url);
     },
     set successData(response) {
@@ -35,7 +35,7 @@ const getAnggota = {
 
 const getBuku = {
     set loadData(data) {
-        const url = "http://localhost:8000" + data;
+        const url = "http://cadf-20-213-242-75.ngrok.io" + data;
         Functions.prototype.getRequest(getBuku, url);
     },
     set successData(response) {
@@ -55,7 +55,7 @@ const getBuku = {
 
 const getPetugas = {
     set loadData(data) {
-        const url = "http://localhost:8000" + data;
+        const url = "http://cadf-20-213-242-75.ngrok.io" + data;
         Functions.prototype.getRequest(getPetugas, url);
     },
     set successData(response) {
@@ -67,7 +67,7 @@ const getPetugas = {
 
 const getPeminjaman = {
     set loadData(data) {
-        const url = "http://localhost:8000" + data;
+        const url = "http://cadf-20-213-242-75.ngrok.io" + data;
         Functions.prototype.getRequest(getPeminjaman, url);
     },
     set successData(response) {

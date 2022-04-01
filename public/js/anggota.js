@@ -5,7 +5,7 @@ $(document).ready(function(){
 
 const getAnggota = {
     set loadData(data) {
-        const url = "http://localhost:8000" + data;
+        const url = "http://cadf-20-213-242-75.ngrok.io" + data;
         Functions.prototype.getRequest(getAnggota, url);
     },
     set successData(response) {
@@ -71,7 +71,7 @@ closeHapusModal.addEventListener('click', function() {
 
 const getPetugas = {
     set loadData(data) {
-        const url = "http://localhost:8000" + data;
+        const url = "http://cadf-20-213-242-75.ngrok.io" + data;
         Functions.prototype.getRequest(getPetugas, url);
     },
     set successData(response) {

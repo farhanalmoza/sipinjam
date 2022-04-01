@@ -8,7 +8,7 @@ window.jsPDF = window.jspdf.jsPDF;
 
 const getBuku = {
     set loadData(data) {
-        const url = "http://localhost:8000" + data;
+        const url = "http://cadf-20-213-242-75.ngrok.io" + data;
         Functions.prototype.getRequest(getBuku, url);
     },
     set successData(response) {
@@ -49,7 +49,7 @@ const getBuku = {
 
 const getKategori = {
     set loadData(data) {
-        const url = "http://localhost:8000" + data;
+        const url = "http://cadf-20-213-242-75.ngrok.io" + data;
         Functions.prototype.getRequest(getKategori, url);
     },
     set successData(response) {
@@ -159,7 +159,7 @@ function generatePDF() {
 
 const reportBuku = {
     set loadData(data) {
-        const url = "http://localhost:8000" + data;
+        const url = "http://cadf-20-213-242-75.ngrok.io" + data;
         Functions.prototype.getRequest(reportBuku, url);
     },
     set successData(response) {
@@ -185,7 +185,7 @@ const reportBuku = {
 
 const getPetugas = {
     set loadData(data) {
-        const url = "http://localhost:8000" + data;
+        const url = "http://cadf-20-213-242-75.ngrok.io" + data;
         Functions.prototype.getRequest(getPetugas, url);
     },
     set successData(response) {

@@ -14,7 +14,7 @@ $(document).ready(function(){
 
 const getPeminjaman = {
     set loadData(data) {
-        const url = "http://localhost:8000" + data;
+        const url = "http://cadf-20-213-242-75.ngrok.io" + data;
         Functions.prototype.getRequest(getPeminjaman, url);
     },
     set successData(response) {
@@ -34,7 +34,7 @@ const getPeminjaman = {
 
 const getPetugas = {
     set loadData(data) {
-        const url = "http://localhost:8000" + data;
+        const url = "http://cadf-20-213-242-75.ngrok.io" + data;
         Functions.prototype.getRequest(getPetugas, url);
     },
     set successData(response) {
@@ -51,7 +51,7 @@ $('#no_peminjaman').change(function(){
 
 const getDetailPeminjaman = {
     set loadData(data) {
-        const url = "http://localhost:8000" + data;
+        const url = "http://cadf-20-213-242-75.ngrok.io" + data;
         Functions.prototype.getRequest(getDetailPeminjaman, url);
     },
     set successData(response) {

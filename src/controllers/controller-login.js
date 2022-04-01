@@ -10,7 +10,7 @@ pool.on('error',(err)=> {
 module.exports ={
     login(req,res){
         res.render("auth/login",{
-            url : 'http://localhost:8000/',
+            url : 'http://cadf-20-213-242-75.ngrok.io/',
             colorFlash: req.flash('color'),
             statusFlash: req.flash('status'),
             pesanFlash: req.flash('message'),

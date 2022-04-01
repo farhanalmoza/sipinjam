@@ -9,7 +9,7 @@ pool.on('error',(err)=> {
 module.exports = {
     index(req,res){
         res.render("dashboard",{
-            url : 'http://localhost:8000/',
+            url : 'http://cadf-20-213-242-75.ngrok.io/',
         });
     }
 }

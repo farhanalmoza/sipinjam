@@ -9,7 +9,7 @@ pool.on('error',(err)=> {
 module.exports = {
     index(req,res){
         res.render("pengembalian",{
-            url : 'http://localhost:8000/',
+            url : 'http://cadf-20-213-242-75.ngrok.io/',
         });
     },
     save(req,res){

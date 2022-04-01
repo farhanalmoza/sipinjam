@@ -9,7 +9,7 @@ pool.on('error',(err)=> {
 module.exports ={
     formRegister(req,res){
         res.render("auth/register",{
-            url : 'http://localhost:8000/',
+            url : 'http://cadf-20-213-242-75.ngrok.io/',
         });
     },
     saveRegister(req,res){

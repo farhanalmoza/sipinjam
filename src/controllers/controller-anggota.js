@@ -9,7 +9,7 @@ pool.on('error',(err)=> {
 module.exports = {
     index(req,res){
         res.render("anggota",{
-            url : 'http://localhost:8000/',
+            url : 'http://cadf-20-213-242-75.ngrok.io/',
         });
     },
     all(req,res){
