@@ -68,7 +68,8 @@
 					<form action="/peminjaman/save" method="post">
 						<div class="form-control">
 							<label for="tgl_pinjam">Tanggal Peminjaman</label>
-							<input type="date" name="tgl_pinjam" id="tgl_pinjam" disabled>
+							<input type="date" id="tgl_pinjam_display" disabled>
+							<input type="hidden" id="tgl_pinjam" name="tgl_pinjam">
 						</div>
 						<div class="form-control">
 							<label for="tgl_kembali">Tanggal Pengembalian</label>
