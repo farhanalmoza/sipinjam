@@ -10,6 +10,7 @@ $(document).ready(function(){
     const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     const yyyy = today.getFullYear();
     const todayDate = yyyy + '-' + mm + '-' + dd;
+    $('#tgl_pinjam_display').val(todayDate);
     $('#tgl_pinjam').val(todayDate);
 });
 
