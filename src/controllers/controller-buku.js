@@ -13,7 +13,7 @@ module.exports = {
         });
     },
     all(req,res){
-        let sql = "SELECT * FROM buku ORDER BY id DESC";
+        let sql = "SELECT * FROM buku ORDER BY id_buku DESC";
         let query = pool.query(sql, (err, results) => {
             if(err) throw err;
             return res.json(results);
@@ -33,7 +33,7 @@ module.exports = {
         });
     },
     delete(req,res){
-        let sql = "DELETE FROM buku WHERE id = "+req.body.id_buku;
+        let sql = "DELETE FROM buku WHERE id_buku = "+req.body.id_buku;
         let query = pool.query(sql, req.params.id,(err, results) => {
             if(err) throw err;
             res.redirect('/buku');
@@ -46,7 +46,7 @@ module.exports = {
                     +"', penulis='"+req.body.penulis
                     +"', tahun_terbit='"+req.body.tahun_terbit
                     +"', stok='"+req.body.stok
-                    +"' WHERE id="+req.body.id_buku;
+                    +"' WHERE id_buku="+req.body.id_buku;
         let query = pool.query(sql, (err, results) => {
             if(err) throw err;
             res.redirect('/buku');

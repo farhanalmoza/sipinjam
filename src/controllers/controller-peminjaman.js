@@ -15,8 +15,10 @@ module.exports = {
     all(req,res){
         let sql = `SELECT * FROM peminjaman
                     JOIN anggota ON peminjaman.id_anggota = anggota.id
-                    JOIN buku ON peminjaman.id_buku = buku.id
-                    JOIN petugas ON peminjaman.id_petugas = petugas.id`;
+                    JOIN buku ON peminjaman.id_buku = buku.id_buku
+                    JOIN petugas ON peminjaman.id_petugas = petugas.id
+                    WHERE status = 'pinjam'
+                    ORDER BY peminjaman.id_peminjaman DESC`;
         let query = pool.query(sql, (err, results) => {
             if(err) throw err;
             return res.json(results);
@@ -27,30 +29,15 @@ module.exports = {
                     tgl_kembali: req.body.tgl_kembali,
                     id_buku: req.body.id_buku,
                     id_anggota: req.body.id_anggota,
-                    id_petugas: req.body.id_petugas
+                    id_petugas: req.body.id_petugas,
+                    status: "pinjam"
                 };
         let sql = "INSERT INTO peminjaman SET ?";
-        let query = pool.query(sql, data,(err, results) => {
+        let sqlBuku = "UPDATE buku SET stok = stok - 1, dipinjam = dipinjam + 1 WHERE id_buku = "+req.body.id_buku;
+        let queryBuku = pool.query(sqlBuku, (err, results) => {
             if(err) throw err;
-            res.redirect('/peminjaman');
         });
-    },
-    update(req,res){
-        let data = {tgl_pinjam: req.body.tanggal_pinjam,
-                    tgl_kembali: req.body.tanggal_kembali,
-                    id_buku: req.body.id_buku,
-                    id_anggota: req.body.id_anggota,
-                    id_petugas: req.body.id_petugas
-                };
-        let sql = "UPDATE peminjaman SET ? WHERE id="+req.body.id;
         let query = pool.query(sql, data,(err, results) => {
-            if(err) throw err;
-            res.redirect('/peminjaman');
-        });
-    },
-    delete(req,res){
-        let sql = "DELETE FROM peminjaman WHERE id="+req.body.id;
-        let query = pool.query(sql, (err, results) => {
             if(err) throw err;
             res.redirect('/peminjaman');
         });
@@ -59,7 +46,7 @@ module.exports = {
         let id = req.params.id;
         let sql = `SELECT * FROM peminjaman
                     JOIN anggota ON peminjaman.id_anggota = anggota.id
-                    JOIN buku ON peminjaman.id_buku = buku.id
+                    JOIN buku ON peminjaman.id_buku = buku.id_buku
                     WHERE peminjaman.id_peminjaman=${id}`;
         let query = pool.query(sql, (err, results) => {
             if(err) throw err;

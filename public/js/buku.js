@@ -33,8 +33,8 @@ const getBuku = {
                     <td>${buku[i].penerbit}</td>
                     <td>${buku[i].tahun_terbit}</td>
                     <td>${buku[i].stok}</td>
-                    <td class="danger delete" data-id="${buku[i].id}">Hapus</td>
-                    <td class="primary edit" data-id="${buku[i].id}"
+                    <td class="danger delete" data-id="${buku[i].id_buku}">Hapus</td>
+                    <td class="primary edit" data-id="${buku[i].id_buku}"
                                              data-judul="${buku[i].judul}"
                                              data-kategori="${buku[i].id_kategori}"
                                              data-penulis="${buku[i].penulis}"

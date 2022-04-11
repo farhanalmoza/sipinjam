@@ -20,7 +20,10 @@ module.exports = {
         });
     },
     save(req,res){
-        let data = {id: req.body.id_anggota, nama: req.body.nama_anggota, telepon: req.body.telepon_anggota, alamat: req.body.alamat_anggota};
+        let data = {id: req.body.id_anggota,
+                    nama_anggota: req.body.nama_anggota,
+                    telepon: req.body.telepon_anggota,
+                    alamat: req.body.alamat_anggota};
         let sql = "INSERT INTO anggota SET ?";
         let query = pool.query(sql, data,(err, results) => {
             if(err) throw err;
@@ -28,7 +31,10 @@ module.exports = {
         });
     },
     update(req,res){
-        let data = {id: req.body.id_anggota, nama: req.body.nama_anggota, telepon: req.body.telepon_anggota, alamat: req.body.alamat_anggota};
+        let data = {id: req.body.id_anggota,
+                    nama_anggota: req.body.nama_anggota,
+                    telepon: req.body.telepon_anggota,
+                    alamat: req.body.alamat_anggota};
         let sql = "UPDATE anggota SET ? WHERE id="+req.body.id_anggota;
         let query = pool.query(sql, data,(err, results) => {
             if(err) throw err;

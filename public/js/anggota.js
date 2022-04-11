@@ -23,12 +23,12 @@ const getAnggota = {
         for (let i = 0; i < anggota.length; i++) {
             table.append(`
                 <tr>
-                    <td>${anggota[i].nama}</td>
+                    <td>${anggota[i].nama_anggota}</td>
                     <td>${anggota[i].telepon}</td>
                     <td>${anggota[i].alamat}</td>
                     <td class="danger delete" data-id_anggota="${anggota[i].id}">Hapus</td>
                     <td class="primary edit" data-id_anggota="${anggota[i].id}"
-                                             data-nama_anggota="${anggota[i].nama}" 
+                                             data-nama_anggota="${anggota[i].nama_anggota}" 
                                              data-telepon_anggota="${anggota[i].telepon}"
                                              data-alamat_anggota="${anggota[i].alamat}">Edit</td>
                 </tr>

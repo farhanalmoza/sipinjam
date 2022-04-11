@@ -70,7 +70,7 @@ function bukuChart() {
 
 const data = {
     datasets: [{
-        label: 'Persebaran buku',
+        label: 'Stok buku',
         data: [1,2,3],
         backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
