@@ -26,6 +26,10 @@ module.exports = {
                     penulis: req.body.penulis,
                     tahun_terbit: req.body.tahun_terbit,
                     stok: req.body.stok};
+        let sqlKategori = `UPDATE kategori SET jumlah = jumlah + 1 WHERE id_kategori = ${req.body.id_kategori}`;
+        let queryKategori = pool.query(sqlKategori, (err, results) => {
+            if(err) throw err;
+        });
         let sql = "INSERT INTO buku SET ?";
         let query = pool.query(sql, data,(err, results) => {
             if(err) throw err;
@@ -40,8 +44,20 @@ module.exports = {
         });
     },
     update(req,res){
+        let sqlKategoriBefore = `UPDATE kategori SET
+                            jumlah = jumlah - 1 WHERE id_kategori = ${req.body.id_kategori_before}`;
+        let queryKategoriBefore = pool.query(sqlKategoriBefore, (err, results) => {
+            if(err) throw err;
+        });
+
+        let sqlKategoriAfter = `UPDATE kategori SET
+                            jumlah = jumlah + 1 WHERE id_kategori = ${req.body.id_kategori_after}`;
+        let queryKategoriAfter = pool.query(sqlKategoriAfter, (err, results) => {
+            if(err) throw err;
+        });
+
         let sql = "UPDATE buku SET judul='"+req.body.judul
-                    +"', id_kategori='"+req.body.id_kategori
+                    +"', id_kategori='"+req.body.id_kategori_after
                     +"', penerbit='"+req.body.penerbit
                     +"', penulis='"+req.body.penulis
                     +"', tahun_terbit='"+req.body.tahun_terbit

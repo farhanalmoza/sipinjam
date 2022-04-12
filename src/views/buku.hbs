@@ -139,6 +139,14 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="recent-updates">
+				<h2>Chart Kategori Buku</h2>
+				<div class="updates">
+					<canvas id="chartKategori"></canvas>
+				</div>
+			</div>
+			<!-- END OF CHART KATEGORI -->
 		</div>
 	</div>
 
@@ -153,9 +161,10 @@
 						<label for="judul">Judul Buku</label>
 						<input type="text" name="judul" class="judul">
 					</div>
+					<input type="hidden" name="id_kategori_before" id="id_kategori_before">
 					<div class="form-control">
 						<label for="id_kategori">Kategori Buku</label>
-						<select name="id_kategori" class="id_kategori">
+						<select name="id_kategori_after" class="id_kategori_after">
 							
 						</select>
 					</div>
@@ -241,17 +250,20 @@
 	</div>
 	{{!-- End Modal Hapus Kategori --}}
     
-{{!-- JQuery --}}
-<script src="/assets/js/jquery-3.3.1.js"></script>
+	{{!-- JQuery --}}
+	<script src="/assets/js/jquery-3.3.1.js"></script>
 
-{{!-- pdf --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+	{{!-- Chart JS --}}
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 
-{{!-- My Script --}}
-<script src="/assets/js/script.js"></script>
-<script src="/assets/js/functions.js"></script>
+	{{!-- pdf --}}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-{{!-- Page Script --}}
-<script src="/assets/js/buku.js"></script>
+	{{!-- My Script --}}
+	<script src="/assets/js/script.js"></script>
+	<script src="/assets/js/functions.js"></script>
+
+	{{!-- Page Script --}}
+	<script src="/assets/js/buku.js"></script>
 </body>
 </html>

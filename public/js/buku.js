@@ -2,6 +2,8 @@ $(document).ready(function() {
     getBuku.loadData = "/buku/all";
     getKategori.loadData = "/kategori/all";
     getPetugas.loadData = "/petugas/profile";
+
+    kategoriChart();
 });
 
 window.jsPDF = window.jspdf.jsPDF;
@@ -62,7 +64,7 @@ const getKategori = {
                     <div class="info">
                         <h3 class="nama-kategori">${kategori[i].kategori}</h3>
                     </div>
-                    <h3 class="danger delete" data-id="${kategori[i].id}">Hapus</h3>
+                    <h3 class="danger delete" data-id="${kategori[i].id_kategori}">Hapus</h3>
                 </div>
             </div>
             `);
@@ -75,7 +77,7 @@ const getKategori = {
         document.getElementById("id_kategori").appendChild(option);
         for (let i = 0; i < kategori.length; i++) {
             const option = document.createElement("option");
-            option.value = kategori[i].id;
+            option.value = kategori[i].id_kategori;
             option.innerHTML = kategori[i].kategori;
             document.getElementById("id_kategori").appendChild(option);
         }
@@ -87,9 +89,9 @@ const getKategori = {
         document.getElementsByClassName("id_kategori")[0].appendChild(optionUpdate);
         for (let i = 0; i < kategori.length; i++) {
             const optionUpdate = document.createElement("option");
-            optionUpdate.value = kategori[i].id;
+            optionUpdate.value = kategori[i].id_kategori;
             optionUpdate.innerHTML = kategori[i].kategori;
-            document.getElementsByClassName("id_kategori")[0].appendChild(optionUpdate);
+            document.getElementsByClassName("id_kategori_after")[0].appendChild(optionUpdate);
         }
     }
 }
@@ -115,7 +117,8 @@ $('#tabel-buku').on('click', '.edit', function() {
     var stok = $(this).data('stok');
     $('.id').val(id);
     $('.judul').val(judul);
-    $('.id_kategori').val(kategori);
+    $('#id_kategori_before').val(kategori);
+    $('.id_kategori_after').val(kategori);
     $('.penerbit').val(penerbit);
     $('.penulis').val(penulis);
     $('.tahun_terbit').val(tahun_terbit);
@@ -193,3 +196,51 @@ const getPetugas = {
         document.getElementById("nama-petugas").innerHTML = data[0].nama;
     }
 }
+
+// chart kategori
+function kategoriChart() {
+    async function fetchData() {
+        const url = "http://localhost:8000/kategori/all";
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data);
+        return data;
+    }
+
+    fetchData().then(data => {
+        const kategori = data.map(
+            function(index) {return index.kategori}
+        );
+        const jumlah = data.map(
+            function(index) {return index.jumlah}
+        );
+
+        myKategoriChart.config.data.labels = kategori;
+        myKategoriChart.config.data.datasets[0].data = jumlah;
+        myKategoriChart.update();
+    });
+}
+
+const data = {
+    datasets: [{
+        backgroundColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+        ],borderWidth: 1
+    }]
+}
+
+const config = {
+    type: 'pie',
+    data,
+}
+
+const myKategoriChart = new Chart(
+    document.getElementById('chartKategori'),
+    config
+);
+// end chart kategori

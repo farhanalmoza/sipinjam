@@ -17,7 +17,30 @@ module.exports = {
                     JOIN anggota ON peminjaman.id_anggota = anggota.id
                     JOIN buku ON peminjaman.id_buku = buku.id_buku
                     JOIN petugas ON peminjaman.id_petugas = petugas.id
+                    ORDER BY peminjaman.id_peminjaman DESC`;
+        let query = pool.query(sql, (err, results) => {
+            if(err) throw err;
+            return res.json(results);
+        });
+    },
+    pinjam(req,res){
+        let sql = `SELECT * FROM peminjaman
+                    JOIN anggota ON peminjaman.id_anggota = anggota.id
+                    JOIN buku ON peminjaman.id_buku = buku.id_buku
+                    JOIN petugas ON peminjaman.id_petugas = petugas.id
                     WHERE status = 'pinjam'
+                    ORDER BY peminjaman.id_peminjaman DESC`;
+        let query = pool.query(sql, (err, results) => {
+            if(err) throw err;
+            return res.json(results);
+        });
+    },
+    kembali(req,res){
+        let sql = `SELECT * FROM peminjaman
+                    JOIN anggota ON peminjaman.id_anggota = anggota.id
+                    JOIN buku ON peminjaman.id_buku = buku.id_buku
+                    JOIN petugas ON peminjaman.id_petugas = petugas.id
+                    WHERE status = 'kembali'
                     ORDER BY peminjaman.id_peminjaman DESC`;
         let query = pool.query(sql, (err, results) => {
             if(err) throw err;

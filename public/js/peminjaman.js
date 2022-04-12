@@ -1,7 +1,7 @@
 $(document).ready(function(){
     getAnggota.loadData = "/anggota/all";
     getBuku.loadData = "/buku/all";
-    getPeminjaman.loadData = "/peminjaman/all";
+    getPeminjaman.loadData = "/peminjaman/pinjam";
     getPetugas.loadData = "/petugas/profile";
 
     // date today
@@ -12,6 +12,8 @@ $(document).ready(function(){
     const todayDate = yyyy + '-' + mm + '-' + dd;
     $('#tgl_pinjam_display').val(todayDate);
     $('#tgl_pinjam').val(todayDate);
+
+    peminjamanChart();
 });
 
 const getAnggota = {
@@ -130,3 +132,46 @@ function exportExcel() {
         document.body.removeChild(link);
     }
 }
+
+// chart peminjaman
+function peminjamanChart() {
+    async function fetchData() {
+        const url = "http://localhost:8000/peminjaman/all";
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+    }
+
+    fetchData().then(data => {
+        const status = data.map(
+            function(index) {return index.status}
+        );
+
+        const belumKembali = status.filter(x => x === "pinjam").length;
+        const sudahKembali = status.filter(x => x === "kembali").length;
+        let dataStatus = [belumKembali, sudahKembali];
+        let labelStatus = ["Belum Kembali", "Sudah Kembali"];
+
+        myPeminjamanChart.config.data.labels = labelStatus;
+        myPeminjamanChart.config.data.datasets[0].data = dataStatus;
+        myPeminjamanChart.update();
+    });
+}
+
+const data = {
+    datasets: [{
+        backgroundColor: ["#ff7782", "#41f1b6"],
+        borderWidth: 1
+    }]
+}
+
+const config = {
+    type: 'pie',
+    data,
+}
+
+const myPeminjamanChart = new Chart(
+    document.getElementById('chartPeminjaman'),
+    config
+);
+// end chart peminjaman
