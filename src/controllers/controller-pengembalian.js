@@ -31,5 +31,12 @@ module.exports = {
             if(err) throw err;
             res.redirect("/pengembalian");
         });
+    },
+    all(req,res){
+        let sql = "SELECT * FROM pengembalian";
+        let query = pool.query(sql,(err,results)=>{
+            if(err) throw err;
+            return res.json(results);
+        });
     }
 }

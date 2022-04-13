@@ -143,35 +143,90 @@ function peminjamanChart() {
     }
 
     fetchData().then(data => {
-        const status = data.map(
-            function(index) {return index.status}
+        let januari = 0,
+            februari = 0,
+            maret = 0,
+            april = 0,
+            mei = 0,
+            juni = 0,
+            juli = 0,
+            agustus = 0,
+            september = 0,
+            oktober = 0,
+            november = 0,
+            desember = 0;
+
+        const tgl_pinjam = data.map(
+            function(index) {return index.tgl_pinjam}
         );
+        tgl_pinjam.filter(function(value, index, arr) {
+            arr[index] = value.split("-");
+            if (arr[index][1] == "01") {
+                januari++;
+            } else if (arr[index][1] == "02") {
+                februari++;
+            } else if (arr[index][1] == "03") {
+                maret++;
+            } else if (arr[index][1] == "04") {
+                april++;
+            } else if (arr[index][1] == "05") {
+                mei++;
+            } else if (arr[index][1] == "06") {
+                juni++;
+            } else if (arr[index][1] == "07") {
+                juli++;
+            } else if (arr[index][1] == "08") {
+                agustus++;
+            } else if (arr[index][1] == "09") {
+                september++;
+            } else if (arr[index][1] == "10") {
+                oktober++;
+            } else if (arr[index][1] == "11") {
+                november++;
+            } else if (arr[index][1] == "12") {
+                desember++;
+            }
+        });
 
-        const belumKembali = status.filter(x => x === "pinjam").length;
-        const sudahKembali = status.filter(x => x === "kembali").length;
-        let dataStatus = [belumKembali, sudahKembali];
-        let labelStatus = ["Belum Kembali", "Sudah Kembali"];
-
-        myPeminjamanChart.config.data.labels = labelStatus;
-        myPeminjamanChart.config.data.datasets[0].data = dataStatus;
+        let dataset = [januari, februari, maret, april, mei, juni, juli, agustus, september, oktober, november, desember];
+        
+        myPeminjamanChart.config.data.datasets[0].data = dataset;
         myPeminjamanChart.update();
     });
 }
 
+const labels = [
+    'Januari',
+    'Februari',
+    'Maret',
+    'April',
+    'Mei',
+    'Juni',
+    'Juli',
+    'Agustus',
+    'September',
+    'Oktober',
+    'November',
+    'Desember'
+];
+
 const data = {
+    labels: labels,
     datasets: [{
-        backgroundColor: ["#ff7782", "#41f1b6"],
-        borderWidth: 1
+      label: 'Peminjaman',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
     }]
-}
+};
 
 const config = {
-    type: 'pie',
-    data,
-}
+    type: 'bar',
+    data: data,
+    options: {}
+};
 
 const myPeminjamanChart = new Chart(
-    document.getElementById('chartPeminjaman'),
+    document.getElementById('peminjamanChart'),
     config
 );
 // end chart peminjaman

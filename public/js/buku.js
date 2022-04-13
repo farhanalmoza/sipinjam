@@ -203,7 +203,6 @@ function kategoriChart() {
         const url = "http://localhost:8000/kategori/all";
         const response = await fetch(url);
         const data = await response.json();
-        console.log(data);
         return data;
     }
 
@@ -221,7 +220,7 @@ function kategoriChart() {
     });
 }
 
-const data = {
+const dataKategori = {
     datasets: [{
         backgroundColor: [
             'rgba(255, 99, 132, 1)',
@@ -234,13 +233,13 @@ const data = {
     }]
 }
 
-const config = {
+const configKategori = {
     type: 'pie',
-    data,
+    data: dataKategori,
 }
 
 const myKategoriChart = new Chart(
     document.getElementById('chartKategori'),
-    config
+    configKategori
 );
 // end chart kategori

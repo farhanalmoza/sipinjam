@@ -4,6 +4,7 @@ $(document).ready(function() {
     getPeminjaman.loadData = "/peminjaman/all";
     getPetugas.loadData = "/petugas/profile";
     bukuChart();
+    dashboardPieChart();
 });
 
 const getAnggota = {
@@ -45,6 +46,7 @@ const getPeminjaman = {
     }
 }
 
+// buku chart
 function bukuChart() {
     async function fetchData() {
         const url = "http://localhost:8000/buku/all";
@@ -71,7 +73,6 @@ function bukuChart() {
 const data = {
     datasets: [{
         label: 'Stok buku',
-        data: [1,2,3],
         backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -107,6 +108,57 @@ const myBukuChart = new Chart(
     document.getElementById('bukuChart'),
     config
 );
+// end buku chart
+
+// buku chart
+function dashboardPieChart() {
+    async function fetchData() {
+        const url = "http://localhost:8000/buku/all";
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+    }
+
+    fetchData().then(data => {
+        const buku = data.map(
+            function(index) {return index.judul}
+        );
+
+        const stok = data.map(
+            function(index) {return index.stok}
+        );
+        
+        myDashPie.config.data.labels = buku;
+        myDashPie.config.data.datasets[0].data = stok;
+        myDashPie.update();
+    });
+}
+
+const dataDashPie = {
+    datasets: [{
+        label: 'Stok buku',
+        backgroundColor: [
+            '#7380ec',
+            '#ff7782',
+            '#41f1b6',
+            '#ffbb55',
+            '#111e88',
+            'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+    }]
+}
+
+const configDashPie = {
+    type: 'pie',
+    data: dataDashPie,
+}
+
+const myDashPie = new Chart(
+    document.getElementById('dashboardPieChart'),
+    configDashPie
+);
+// end buku chart
 
 const getPetugas = {
     set loadData(data) {
