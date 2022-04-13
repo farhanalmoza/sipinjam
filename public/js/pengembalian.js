@@ -12,6 +12,7 @@ $(document).ready(function(){
     $('#tgl_kembali').val(todayDate);
 
     pengembalianChart();
+    pinjamKembaliChart();
 });
 
 const getPeminjaman = {
@@ -163,3 +164,58 @@ const myPengembalianChart = new Chart(
     config
 );
 // end chart pengembalian
+
+// chart pinjam dan kembali buku
+function pinjamKembaliChart() {
+    async function fetchData() {
+        const url = "http://localhost:8000/peminjaman/all";
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+    }
+
+    fetchData().then(data => {
+        let pinjam = 0,
+            kembali = 0;
+
+        const status = data.map(
+            function(index) {return index.status}
+        );
+        status.filter(function(value, index, arr) {
+            if (arr[index] == "pinjam") {
+                pinjam++;
+            } else if (arr[index] == "kembali") {
+                kembali++;
+            }
+        });
+
+        let dataset = [pinjam, kembali];
+        
+        myPinjamKembaliChart.config.data.datasets[0].data = dataset;
+        myPinjamKembaliChart.update();
+    });
+}
+
+const labelsPinjamKembaliCharrt = [
+    'Dipinjam',
+    'Dikembalikan'
+];
+
+const dataPinjamKembaliChart = {
+    labels: labelsPinjamKembaliCharrt,
+    datasets: [{
+      backgroundColor: ['#ff7782', '#41f1b6'],
+    }]
+};
+
+const configPinjamKembaliChart = {
+    type: 'pie',
+    data: dataPinjamKembaliChart,
+    options: {}
+};
+
+const myPinjamKembaliChart = new Chart(
+    document.getElementById('pinjamKembaliChart'),
+    configPinjamKembaliChart
+);
+// end chart pinjam dan kembali buku
