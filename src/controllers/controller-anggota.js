@@ -22,6 +22,7 @@ module.exports = {
     save(req,res){
         let data = {id: req.body.id_anggota,
                     nama_anggota: req.body.nama_anggota,
+                    jenis_kelamin: req.body.jk,
                     telepon: req.body.telepon_anggota,
                     alamat: req.body.alamat_anggota};
         let sql = "INSERT INTO anggota SET ?";
@@ -33,6 +34,7 @@ module.exports = {
     update(req,res){
         let data = {id: req.body.id_anggota,
                     nama_anggota: req.body.nama_anggota,
+                    jenis_kelamin: req.body.jk_update,
                     telepon: req.body.telepon_anggota,
                     alamat: req.body.alamat_anggota};
         let sql = "UPDATE anggota SET ? WHERE id="+req.body.id_anggota;

@@ -197,7 +197,7 @@ const getPetugas = {
     }
 }
 
-// chart kategori
+// pie chart kategori
 function kategoriChart() {
     async function fetchData() {
         const url = "http://localhost:8000/kategori/all";
@@ -217,11 +217,17 @@ function kategoriChart() {
         myKategoriChart.config.data.labels = kategori;
         myKategoriChart.config.data.datasets[0].data = jumlah;
         myKategoriChart.update();
+
+        // bar kategori char
+        myBarKategoriChart.config.data.labels = kategori;
+        myBarKategoriChart.config.data.datasets[0].data = jumlah;
+        myBarKategoriChart.update();
     });
 }
 
 const dataKategori = {
     datasets: [{
+        label: 'Kategori Buku',
         backgroundColor: [
             'rgba(255, 99, 132, 1)',
             'rgba(54, 162, 235, 1)',
@@ -242,4 +248,16 @@ const myKategoriChart = new Chart(
     document.getElementById('chartKategori'),
     configKategori
 );
-// end chart kategori
+// end pie chart kategori
+
+// bar chart kategori
+const configBarKategori = {
+    type: 'bar',
+    data: dataKategori,
+}
+
+const myBarKategoriChart = new Chart(
+    document.getElementById('bukuBarChart'),
+    configBarKategori
+);
+// end bar chart kategori
