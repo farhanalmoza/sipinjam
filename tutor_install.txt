@@ -1,0 +1,8 @@
+cara menjalankan aplikasi siPinjam
+
+1) pastikan anda telah menginstal node.js di komputer anda, jika belum maka silahkan download di nodejs.org lalu instal
+2) sebelum menjalankan aplikasi sipinjam, pastikan anda memiliki xampp, jika belum silahkan download di https://www.apachefriends.org/download.html
+3) setelah xampp di install silahkan centang mysql dan apache untuk mengaktifkan database
+4) buka phpmyadmin lalu buat database dengan nama pemweb_sipinjam 
+5) jika anda sudah menginstal node.js dan xampp silahkan buka folder sipinjam, buka terminal lalu tuliskan node index.js
+6) keenam buka browser chrome anda lalu kunjungi localhost:8000

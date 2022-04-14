@@ -1,0 +1,9 @@
+USER LOGIN APLIKASI
+username : han@on.com
+password : han
+
+USER AKSES DATABASE
+host: localhost
+user: root
+password: root
+database: pemweb_sipinjam
