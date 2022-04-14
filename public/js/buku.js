@@ -233,7 +233,7 @@ const myBarKategoriChart = new Chart(
 
 // pagination
 function paginatedResult(response, table, pagination, page) {
-    const limit = 1
+    const limit = 10
 
     const startIndex = (page - 1) * limit
     const endIndex = page * limit
